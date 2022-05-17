@@ -9,15 +9,19 @@ Explain the problem statement
 ## DESIGN STEPS
 
 ### STEP 1:
-Build a 2D grid world with initial state , goal state and obstacles:
-
+Build a 2D grid world with initial state and goal state
+<br>Initial State: (2,2)
+<br>Goal State: (5,8)
 ### STEP 2:
-
-
-### STEP -> Write your own steps:
+Mention the Obstacles in the 2D grid World
+### STEP 3:
+Define the function for the distance function for the heuristic function
+### STEP 4:
+Pass all the values to the GirdProblem, and print the solution path.
 
 
 ## Draw the 2D 
+![GridWorld (1)](https://user-images.githubusercontent.com/75235488/168844686-7413b12e-95c7-4643-a682-b6967c9a5a7b.png)
 
 
 ## PROGRAM
@@ -181,8 +185,13 @@ path_states(s1)
 
 
 ## OUTPUT:
+![image](https://user-images.githubusercontent.com/75235488/168845356-f8a2f56f-de3b-42ea-8a6a-1a43c0c5d820.png)
 
-Explain the Completeness and complexity of the algorithm:
+![draw](https://user-images.githubusercontent.com/75235488/168851299-e7be6241-fd0e-415c-8a03-d6c7d121d038.png)
+
+
+### Explain the Completeness and complexity of the algorithm:
+The algorithm is able to find the solution path for the given problem. But the solution path, might not be the shortest path to reach the goal state.And in some cases,it goes beyond the boundary of the grid.
 
 ## RESULT:
 Code to find the route from the source to the destination point using A* algorithm for 2D grid world is developed successfully.
