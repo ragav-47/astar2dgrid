@@ -22,7 +22,6 @@ Define the function for the distance function for the heuristic function
 ### STEP 4:
 Pass all the values to the GirdProblem, and print the solution path.
 
-
 ## Draw the 2D 
 ![GridWorld (1)](https://user-images.githubusercontent.com/75235488/168844686-7413b12e-95c7-4643-a682-b6967c9a5a7b.png)
 
@@ -41,7 +40,6 @@ import sys
 from collections import defaultdict, deque, Counter
 from itertools import combinations
 import heapq
-
 class Problem(object):
     """The abstract class for a formal problem. A new domain subclasses this,
     overriding `actions` and `results`, and perhaps other methods.
@@ -76,10 +74,8 @@ class Node:
         return 0 if self.parent is None else (1 + len(self.parent))
     def __lt__(self, other): 
         return self.path_cost < other.path_cost
-
 failure = Node('failure', path_cost=math.inf) # Indicates an algorithm couldn't find a solution.
 cutoff  = Node('cutoff',  path_cost=math.inf) # Indicates iterative deepening search was cut off.
-
 def expand(problem, node):
     "Expand a node, generating the children nodes."
     s = node.state
@@ -87,43 +83,32 @@ def expand(problem, node):
         s1 = problem.result(s, action)
         cost = node.path_cost + problem.action_cost(s, action, s1)
         yield Node(s1, node, action, cost)
-        
-
 def path_actions(node):
     "The sequence of actions to get to this node."
     if node.parent is None:
         return []  
     return path_actions(node.parent) + [node.action]
-
-
 def path_states(node):
     "The sequence of states to get to this node."
     if node in (cutoff, failure, None): 
         return []
     return path_states(node.parent) + [node.state]
-
 class PriorityQueue:
     """A queue in which the item with minimum f(item) is always popped first."""
-
     def __init__(self, items=(), key=lambda x: x): 
         self.key = key
         self.items = [] # a heap of (score, item) pairs
         for item in items:
-            self.add(item)
-         
+            self.add(item)  
     def add(self, item):
         """Add item to the queuez."""
         pair = (self.key(item), item)
         heapq.heappush(self.items, pair)
-
     def pop(self):
         """Pop and return the item with min f(item) value."""
         return heapq.heappop(self.items)[1]
-    
     def top(self): return self.items[0][1]
-
     def __len__(self): return len(self.items)
-
 def best_first_search(problem, f):
     "Search nodes with minimum f(node) value first."
     node = Node(problem.initial)
@@ -139,7 +124,6 @@ def best_first_search(problem, f):
                 reached[s] = child
                 frontier.add(child)
     return failure
-
 def g(n): 
     return n.path_cost
 
